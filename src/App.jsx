@@ -8,7 +8,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 //import { Box } from '@mui/material';
 import React from 'react';
-import { TextField, Box, Grid, Typography } from '@mui/material';
+import { TextField, Box, Grid, Typography, Button } from '@mui/material';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -20,6 +20,41 @@ function App() {
   const [largeText6, setLargeText6] = useState("");
   const [largeText7, setLargeText7] = useState("");
   const [largeText8, setLargeText8] = useState("");
+ 
+  const [m1, setM1] = useState(0) 
+  const [m2, setM2] = useState(0) 
+  const [m3, setM3] = useState(0) 
+  const [m4, setM4] = useState(0) 
+  const [m5, setM5] = useState(0) 
+  const [m6, setM6] = useState(0)  
+  const [m7, setM7] = useState(0) 
+  const [m8, setM8] = useState(0) 
+
+  const [p1, setP1] = useState(0);
+  const [p2, setP2] = useState(0);
+  const [p3, setP3] = useState(0);
+  const [p4, setP4] = useState(0);
+  const [p5, setP5] = useState(0);
+  const [p6, setP6] = useState(0);
+  const [p7, setP7] = useState(0);
+  const [p8, setP8] = useState(0);
+
+  const [d1, setD1] = useState(0);
+  const [d2, setD2] = useState(0);
+  const [d3, setD3] = useState(0);
+  const [d4, setD4] = useState(0);
+  const [d5, setD5] = useState(0);
+  const [d6, setD6] = useState(0);
+  const [d7, setD7] = useState(0);
+  const [d8, setD8] = useState(0);
+
+  const mValues = [m1, m2, m3, m4, m5, m6, m7, m8];
+  const pValues = [p1, p2, p3, p4, p5, p6, p7, p8];
+  const dValues = [d1, d2, d3, d4, d5, d6, d7, d8];
+
+  const mSetters = [setM1, setM2, setM3, setM4, setM5, setM6, setM7, setM8];
+  const pSetters = [setP1, setP2, setP3, setP4, setP5, setP6, setP7, setP8];
+  const dSetters = [setD1, setD2, setD3, setD4, setD5, setD6, setD7, setD8];
 
 
 
@@ -54,6 +89,8 @@ function App() {
   const [num22, setNum22] = useState(null);
   const [num23, setNum23] = useState(null);
   const [num24, setNum24] = useState(null);
+
+
 
   useEffect(() => {
     const extractNumbers = (text) => {
@@ -169,21 +206,40 @@ function App() {
           <Grid item xs={8}>
             <Grid container spacing={2}>
               <Grid item xs={4}>
-                <TextField fullWidth variant="outlined" placeholder={`Magna ${index + 1}`} />
+                <TextField
+                  fullWidth
+                  variant="outlined"
+                  placeholder={`Magna ${index + 1}`}
+                  value={mValues[index]} // Vincula el valor con el estado m1, m2, ..., m8
+                  onChange={(e) => mSetters[index](e.target.value)} // Actualiza el valor de m1, m2, ..., m8
+                />
               </Grid>
               <Grid item xs={4}>
-                <TextField fullWidth variant="outlined" placeholder={`Premium ${index + 1}`} />
+                <TextField
+                  fullWidth
+                  variant="outlined"
+                  placeholder={`Premium ${index + 1}`}
+                  value={pValues[index]} // Vincula el valor con el estado p1, p2, ..., p8
+                  onChange={(e) => pSetters[index](e.target.value)} // Actualiza el valor de p1, p2, ..., p8
+                />
               </Grid>
               <Grid item xs={4}>
-                <TextField fullWidth variant="outlined" placeholder={`Diesel ${index + 1}`} />
+                <TextField
+                  fullWidth
+                  variant="outlined"
+                  placeholder={`Diesel ${index + 1}`}
+                  value={dValues[index]} // Vincula el valor con el estado d1, d2, ..., d8
+                  onChange={(e) => dSetters[index](e.target.value)} // Actualiza el valor de d1, d2, ..., d8
+                />
               </Grid>
             </Grid>
           </Grid>
         </Grid>
       ))}
+      
       <Box sx={{ mt: 4 }}>
         <Typography variant="h6" gutterBottom>
-          Texto Adicional:
+          Texto Adicional 1:
         </Typography>
         <TextField
           fullWidth
@@ -197,7 +253,7 @@ function App() {
       </Box>
       <Box sx={{ mt: 4 }}>
         <Typography variant="h6" gutterBottom>
-          Texto Adicional:
+          Texto Adicional 2:
         </Typography>
         <TextField
           fullWidth
@@ -211,7 +267,7 @@ function App() {
       </Box>
       <Box sx={{ mt: 4 }}>
         <Typography variant="h6" gutterBottom>
-          Texto Adicional:
+          Texto Adicional 3:
         </Typography>
         <TextField
           fullWidth
@@ -225,7 +281,7 @@ function App() {
       </Box>
       <Box sx={{ mt: 4 }}>
         <Typography variant="h6" gutterBottom>
-          Texto Adicional:
+          Texto Adicional 4:
         </Typography>
         <TextField
           fullWidth
@@ -239,7 +295,7 @@ function App() {
       </Box>
       <Box sx={{ mt: 4 }}>
         <Typography variant="h6" gutterBottom>
-          Texto Adicional:
+          Texto Adicional 5:
         </Typography>
         <TextField
           fullWidth
@@ -253,7 +309,7 @@ function App() {
       </Box>
       <Box sx={{ mt: 4 }}>
         <Typography variant="h6" gutterBottom>
-          Texto Adicional:
+          Texto Adicional 6:
         </Typography>
         <TextField
           fullWidth
@@ -267,7 +323,7 @@ function App() {
       </Box>
       <Box sx={{ mt: 4 }}>
         <Typography variant="h6" gutterBottom>
-          Texto Adicional:
+          Texto Adicional 7:
         </Typography>
         <TextField
           fullWidth
@@ -281,7 +337,7 @@ function App() {
       </Box>
       <Box sx={{ mt: 4 }}>
         <Typography variant="h6" gutterBottom>
-          Texto Adicional:
+          Texto Adicional 8:
         </Typography>
         <TextField
           fullWidth
