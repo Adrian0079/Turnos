@@ -353,6 +353,18 @@ function App() {
           <Typography variant="body1">Primer número: {num1}</Typography>
           <Typography variant="body1">Segundo número: {num2}</Typography>
           <Typography variant="body1">Tercer número: {num3}</Typography>
+          <Typography variant="h6" gutterBottom>
+          Consulta SQL generada:
+          </Typography>
+          <Typography variant="body1">
+    {`UPDATE DPVGTURND
+SET TOTAL01 = ${(parseFloat(num1 || 0) + parseFloat(m1 || 0)).toFixed(2)},
+    TOTAL02 = ${(parseFloat(num2 || 0) + parseFloat(p1 || 0)).toFixed(2)},
+    TOTAL03 = ${(parseFloat(num3 || 0) + parseFloat(d1 || 0)).toFixed(2)},
+    TOTAL04 = 0,
+    ESTADO = NULL
+WHERE (FECHA = '26-JAN-2025 00:00:00') AND (TURNO = 3) AND (POSCARGA = 1);`}
+  </Typography>
       </Box>
       <Box sx={{ mt: 2 }}>
           <Typography variant="body1">Primer número: {num4}</Typography>
