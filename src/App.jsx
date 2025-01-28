@@ -9,8 +9,28 @@ import '@fontsource/roboto/700.css';
 //import { Box } from '@mui/material';
 import React from 'react';
 import { TextField, Box, Grid, Typography, Button } from '@mui/material';
+import { blue, red } from '@mui/material/colors';
+
+
 
 function App() {
+
+// Estado para el turno
+const [turno, setTurno] = useState(1);
+
+// Función para actualizar el turno
+const handleTurnoChange = (event) => {
+  let newTurno = parseInt(event.target.value, 10);
+
+  // Validar que el turno esté entre 1 y 4
+  if (newTurno < 1) newTurno = 4;
+  if (newTurno > 4) newTurno = 1;
+
+  // Actualizar el estado del turno
+  setTurno(newTurno);
+};
+
+  
   const [count, setCount] = useState(0)
   const [largeText, setLargeText] = useState("");
   const [largeText2, setLargeText2] = useState("");
@@ -237,170 +257,274 @@ function App() {
         </Grid>
       ))}
       
+     
+
+
+
       <Box sx={{ mt: 4 }}>
         <Typography variant="h6" gutterBottom>
-          Texto Adicional 1:
-        </Typography>
+          Consulta a convertir 
+        </Typography> <Typography variant="h5" borderColor={red}>POS 1:</Typography>
         <TextField
           fullWidth
           multiline
           rows={4}
           variant="outlined"
-          placeholder="Escribe aquí..."
+          placeholder="Posición 1"
           value={largeText}
           onChange={(e) => setLargeText(e.target.value)}
         />
       </Box>
       <Box sx={{ mt: 4 }}>
         <Typography variant="h6" gutterBottom>
-          Texto Adicional 2:
-        </Typography>
+            Consulta a convertir 
+        </Typography> <Typography variant="h5" borderColor={red}>POS 2:</Typography>
         <TextField
           fullWidth
           multiline
           rows={4}
           variant="outlined"
-          placeholder="Escribe aquí..."
+          placeholder="Posición 2"
           value={largeText2}
           onChange={(e) => setLargeText2(e.target.value)}
         />
       </Box>
       <Box sx={{ mt: 4 }}>
         <Typography variant="h6" gutterBottom>
-          Texto Adicional 3:
-        </Typography>
+            Consulta a convertir 
+        </Typography> <Typography variant="h5" borderColor={red}>POS 3:</Typography>
         <TextField
           fullWidth
           multiline
           rows={4}
           variant="outlined"
-          placeholder="Escribe aquí..."
+          placeholder="Posición 3"
           value={largeText3}
           onChange={(e) => setLargeText3(e.target.value)}
         />
       </Box>
       <Box sx={{ mt: 4 }}>
         <Typography variant="h6" gutterBottom>
-          Texto Adicional 4:
-        </Typography>
+            Consulta a convertir 
+        </Typography> <Typography variant="h5" borderColor={red}>POS 4:</Typography>
         <TextField
           fullWidth
           multiline
           rows={4}
           variant="outlined"
-          placeholder="Escribe aquí..."
+          placeholder="Posición 4"
           value={largeText4}
           onChange={(e) => setLargeText4(e.target.value)}
         />
       </Box>
       <Box sx={{ mt: 4 }}>
         <Typography variant="h6" gutterBottom>
-          Texto Adicional 5:
-        </Typography>
+            Consulta a convertir 
+        </Typography> <Typography variant="h5" borderColor={red}>POS 5:</Typography>
         <TextField
           fullWidth
           multiline
           rows={4}
           variant="outlined"
-          placeholder="Escribe aquí..."
+          placeholder="Posición 5"
           value={largeText5}
           onChange={(e) => setLargeText5(e.target.value)}
         />
       </Box>
       <Box sx={{ mt: 4 }}>
         <Typography variant="h6" gutterBottom>
-          Texto Adicional 6:
-        </Typography>
+            Consulta a convertir 
+        </Typography> <Typography variant="h5" borderColor={red}>POS 6:</Typography>
         <TextField
           fullWidth
           multiline
           rows={4}
           variant="outlined"
-          placeholder="Escribe aquí..."
+          placeholder="Posición 6"
           value={largeText6}
           onChange={(e) => setLargeText6(e.target.value)}
         />
       </Box>
       <Box sx={{ mt: 4 }}>
         <Typography variant="h6" gutterBottom>
-          Texto Adicional 7:
-        </Typography>
+            Consulta a convertir 
+        </Typography> <Typography variant="h5" borderColor={red}>POS 7:</Typography>
         <TextField
           fullWidth
           multiline
           rows={4}
           variant="outlined"
-          placeholder="Escribe aquí..."
+          placeholder="Posición 7"
           value={largeText7}
           onChange={(e) => setLargeText7(e.target.value)}
         />
       </Box>
       <Box sx={{ mt: 4 }}>
         <Typography variant="h6" gutterBottom>
-          Texto Adicional 8:
-        </Typography>
+            Consulta a convertir 
+        </Typography> <Typography variant="h5" borderColor={red}>POS 8:</Typography>
         <TextField
           fullWidth
           multiline
           rows={4}
           variant="outlined"
-          placeholder="Escribe aquí..."
+          placeholder="Posición 8"
           value={largeText8}
           onChange={(e) => setLargeText8(e.target.value)}
         />
       </Box>
       <Box sx={{ mt: 2 }}>
-          <Typography variant="body1">Primer número: {num1}</Typography>
+          {/* <Typography variant="body1">Primer número: {num1}</Typography>
           <Typography variant="body1">Segundo número: {num2}</Typography>
-          <Typography variant="body1">Tercer número: {num3}</Typography>
-          <Typography variant="h6" gutterBottom>
-          Consulta SQL generada:
+          <Typography variant="body1">Tercer número: {num3}</Typography> */}
+          <Typography variant="h6" gutterBottom className="no-select">
+          --Consulta SQL generada POS_1:
           </Typography>
           <Typography variant="body1">
-    {`UPDATE DPVGTURND
-SET TOTAL01 = ${(parseFloat(num1 || 0) + parseFloat(m1 || 0)).toFixed(2)},
-    TOTAL02 = ${(parseFloat(num2 || 0) + parseFloat(p1 || 0)).toFixed(2)},
-    TOTAL03 = ${(parseFloat(num3 || 0) + parseFloat(d1 || 0)).toFixed(2)},
-    TOTAL04 = 0,
-    ESTADO = NULL
-WHERE (FECHA = '26-JAN-2025 00:00:00') AND (TURNO = 3) AND (POSCARGA = 1);`}
-  </Typography>
+            {`UPDATE DPVGTURND
+            SET TOTAL01 = ${(parseFloat(num1 || 0) + parseFloat(m1 || 0)).toFixed(2)},
+            TOTAL02 = ${(parseFloat(num2 || 0) + parseFloat(p1 || 0)).toFixed(2)},
+            TOTAL03 = ${(parseFloat(num3 || 0) + parseFloat(d1 || 0)).toFixed(2)},
+            TOTAL04 = 0,
+            ESTADO = NULL
+            WHERE (FECHA = '26-JAN-2025 00:00:00') AND (TURNO = ${turno}) AND (POSCARGA = 1);`}
+          </Typography>
       </Box>
       <Box sx={{ mt: 2 }}>
-          <Typography variant="body1">Primer número: {num4}</Typography>
+          {/* <Typography variant="body1">Primer número: {num4}</Typography>
           <Typography variant="body1">Segundo número: {num5}</Typography>
-          <Typography variant="body1">Tercer número: {num6}</Typography>
+          <Typography variant="body1">Tercer número: {num6}</Typography> */}
+          <Typography variant="h6" gutterBottom>
+          --Consulta SQL generada POS_2:
+          </Typography>
+          <Typography variant="body1">
+            {`UPDATE DPVGTURND
+            SET TOTAL01 = ${(parseFloat(num4 || 0) + parseFloat(m2 || 0)).toFixed(2)},
+            TOTAL02 = ${(parseFloat(num5 || 0) + parseFloat(p2 || 0)).toFixed(2)},
+            TOTAL03 = ${(parseFloat(num6 || 0) + parseFloat(d2 || 0)).toFixed(2)},
+            TOTAL04 = 0,
+            ESTADO = NULL
+            WHERE (FECHA = '26-JAN-2025 00:00:00') AND (TURNO = ${turno}) AND (POSCARGA = 1);`}
+          </Typography>
       </Box>
       <Box sx={{ mt: 2 }}>
-          <Typography variant="body1">Primer número: {num7}</Typography>
+          {/* <Typography variant="body1">Primer número: {num7}</Typography>
           <Typography variant="body1">Segundo número: {num8}</Typography>
-          <Typography variant="body1">Tercer número: {num9}</Typography>
+          <Typography variant="body1">Tercer número: {num9}</Typography> */}
+          <Typography variant="h6" gutterBottom>
+          --Consulta SQL generada POS_3:
+          </Typography>
+          <Typography variant="body1">
+            {`UPDATE DPVGTURND
+            SET TOTAL01 = ${(parseFloat(num7 || 0) + parseFloat(m3 || 0)).toFixed(2)},
+            TOTAL02 = ${(parseFloat(num8 || 0) + parseFloat(p3 || 0)).toFixed(2)},
+            TOTAL03 = ${(parseFloat(num9 || 0) + parseFloat(d3 || 0)).toFixed(2)},
+            TOTAL04 = 0,
+            ESTADO = NULL
+            WHERE (FECHA = '26-JAN-2025 00:00:00') AND (TURNO = ${turno}) AND (POSCARGA = 1);`}
+          </Typography>
       </Box>
       <Box sx={{ mt: 2 }}>
-          <Typography variant="body1">Primer número: {num10}</Typography>
+          {/* <Typography variant="body1">Primer número: {num10}</Typography>
           <Typography variant="body1">Segundo número: {num11}</Typography>
-          <Typography variant="body1">Tercer número: {num12}</Typography>
+          <Typography variant="body1">Tercer número: {num12}</Typography> */}
+          <Typography variant="h6" gutterBottom>
+          --Consulta SQL generada POS_4:
+          </Typography>
+          <Typography variant="body1">
+            {`UPDATE DPVGTURND
+            SET TOTAL01 = ${(parseFloat(num10 || 0) + parseFloat(m4 || 0)).toFixed(2)},
+            TOTAL02 = ${(parseFloat(num11 || 0) + parseFloat(p4 || 0)).toFixed(2)},
+            TOTAL03 = ${(parseFloat(num12 || 0) + parseFloat(d4 || 0)).toFixed(2)},
+            TOTAL04 = 0,
+            ESTADO = NULL
+            WHERE (FECHA = '26-JAN-2025 00:00:00') AND (TURNO = ${turno}) AND (POSCARGA = 1);`}
+          </Typography>
       </Box>
       <Box sx={{ mt: 2 }}>
-          <Typography variant="body1">Primer número: {num13}</Typography>
+          {/* <Typography variant="body1">Primer número: {num13}</Typography>
           <Typography variant="body1">Segundo número: {num14}</Typography>
-          <Typography variant="body1">Tercer número: {num15}</Typography>
+          <Typography variant="body1">Tercer número: {num15}</Typography> */}
+          <Typography variant="h6" gutterBottom>
+          --Consulta SQL generada POS_5:
+          </Typography>
+          <Typography variant="body1">
+            {`UPDATE DPVGTURND
+            SET TOTAL01 = ${(parseFloat(num13 || 0) + parseFloat(m5 || 0)).toFixed(2)},
+            TOTAL02 = ${(parseFloat(num14 || 0) + parseFloat(p5 || 0)).toFixed(2)},
+            TOTAL03 = ${(parseFloat(num15 || 0) + parseFloat(d5 || 0)).toFixed(2)},
+            TOTAL04 = 0,
+            ESTADO = NULL
+            WHERE (FECHA = '26-JAN-2025 00:00:00') AND (TURNO = ${turno}) AND (POSCARGA = 1);`}
+          </Typography>
       </Box>
       <Box sx={{ mt: 2 }}>
-          <Typography variant="body1">Primer número: {num16}</Typography>
+          {/* <Typography variant="body1">Primer número: {num16}</Typography>
           <Typography variant="body1">Segundo número: {num17}</Typography>
-          <Typography variant="body1">Tercer número: {num18}</Typography>
+          <Typography variant="body1">Tercer número: {num18}</Typography> */}
+          <Typography variant="h6" gutterBottom>
+          --Consulta SQL generada POS_6:
+          </Typography>
+          <Typography variant="body1">
+            {`UPDATE DPVGTURND
+            SET TOTAL01 = ${(parseFloat(num16 || 0) + parseFloat(m6 || 0)).toFixed(2)},
+            TOTAL02 = ${(parseFloat(num17 || 0) + parseFloat(p6 || 0)).toFixed(2)},
+            TOTAL03 = ${(parseFloat(num18 || 0) + parseFloat(d6 || 0)).toFixed(2)},
+            TOTAL04 = 0,
+            ESTADO = NULL
+            WHERE (FECHA = '26-JAN-2025 00:00:00') AND (TURNO = ${turno}) AND (POSCARGA = 1);`}
+          </Typography>
       </Box>
       <Box sx={{ mt: 2 }}>
-          <Typography variant="body1">Primer número: {num19}</Typography>
+          {/* <Typography variant="body1">Primer número: {num19}</Typography>
           <Typography variant="body1">Segundo número: {num20}</Typography>
-          <Typography variant="body1">Tercer número: {num21}</Typography>
+          <Typography variant="body1">Tercer número: {num21}</Typography> */}
+          <Typography variant="h6" gutterBottom>
+          --Consulta SQL generada POS_7:
+          </Typography>
+          <Typography variant="body1">
+            {`UPDATE DPVGTURND
+            SET TOTAL01 = ${(parseFloat(num19 || 0) + parseFloat(m7 || 0)).toFixed(2)},
+            TOTAL02 = ${(parseFloat(num20 || 0) + parseFloat(p7 || 0)).toFixed(2)},
+            TOTAL03 = ${(parseFloat(num21 || 0) + parseFloat(d7 || 0)).toFixed(2)},
+            TOTAL04 = 0,
+            ESTADO = NULL
+            WHERE (FECHA = '26-JAN-2025 00:00:00') AND (TURNO = ${turno}) AND (POSCARGA = 1);`}
+          </Typography>
       </Box>
       <Box sx={{ mt: 2 }}>
-          <Typography variant="body1">Primer número: {num22}</Typography>
+          {/* <Typography variant="body1">Primer número: {num22}</Typography>
           <Typography variant="body1">Segundo número: {num23}</Typography>
-          <Typography variant="body1">Tercer número: {num24}</Typography>
+          <Typography variant="body1">Tercer número: {num24}</Typography> */}
+          <Typography variant="h6" gutterBottom>
+          --Consulta SQL generada POS_8:
+          </Typography>
+          <Typography variant="body1">
+            {`UPDATE DPVGTURND
+            SET TOTAL01 = ${(parseFloat(num22 || 0) + parseFloat(m8 || 0)).toFixed(2)},
+            TOTAL02 = ${(parseFloat(num23 || 0) + parseFloat(p8 || 0)).toFixed(2)},
+            TOTAL03 = ${(parseFloat(num24 || 0) + parseFloat(d8 || 0)).toFixed(2)},
+            TOTAL04 = 0,
+            ESTADO = NULL
+            WHERE (FECHA = '26-JAN-2025 00:00:00') AND (TURNO = ${turno}) AND (POSCARGA = 1);`}
+          </Typography>
       </Box>
+      <TextField
+        label="Turno"
+        type="number"
+        value={turno}
+        onChange={handleTurnoChange} // Actualizar el valor del turno
+        variant="outlined"
+        fullWidth
+        sx={{ mb: 2 }}
+      />
+
+      <Button
+        variant="contained"
+        onClick={() => setTurno((turno % 4) + 1)} // Incrementa el turno cíclicamente
+      >
+        Siguiente turno
+      </Button>
     </Box>
   )
 }
