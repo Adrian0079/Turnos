@@ -521,7 +521,7 @@ const handleTurnoChange = (event) => {
 
       <Button
         variant="contained"
-        onClick={() => setTurno((turno % 4) + 1)} // Incrementa el turno cíclicamente
+        onClick={() => setTurno((turno % 5) + 1)} // Incrementa el turno cíclicamente
       >
         Siguiente turno
       </Button>
